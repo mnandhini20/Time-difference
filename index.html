@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Difference Calculator</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin-left: 500px;
+    }
+    .container {
+      width: 500px;
+      height: 450px;
+      margin-left: 80px;
+      margin-top: 100px;
+      background-color: orange;
+      border-radius: 15px;
+      padding: 30px;
+    }
+    button {
+      color: white;
+      cursor: pointer;
+      width: 50%;
+      padding: 10px 0;
+      border-radius: 10px;
+      font-size: 20px;
+    }
+    button {
+      background-color: green;
+      margin-top: 30px;
+      margin-left: 140px;
+      width: 180px;
+    }
+    .times {
+      width: 500px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1 style="margin-left: 130px">Time Calculator</h1>
+      <form>
+        <div style="margin-top: 50px">
+          <label
+            style="margin-left: 180px; font-size: 21px; font-weight: bold"
+            for="startTime"
+            >Start Time:</label
+          >
+        </div>
+        <div>
+          <input
+            style="
+              height: 40px;
+              margin-top: 20px;
+              border-radius: 5px;
+              width: 380px;
+              margin-left: 50px;
+            "
+            type="time"
+            id="startTime"
+            required=""
+            class="times"
+          />
+        </div>
+        <div style="margin-top: 20px">
+          <label
+            style="
+              margin-left: 180px;
+              font-size: 21px;
+              font-weight: bold;
+              margin-top: 30px;
+            "
+            for="startTime"
+            >End Time<b>:</b></label
+          >
+        </div>
+        <div>
+          <input
+            style="
+              height: 40px;
+              margin-top: 20px;
+              border-radius: 5px;
+              width: 380px;
+              margin-left: 50px;
+            "
+            type="time"
+            id="endTime"
+            required=""
+            class="times"
+          />
+        </div>
+        <button type="button" onclick="time()">Calculate</button>
+      </form>
+      <div style="margin-left: 100px; margin-top: 30px" id="result"></div>
+    </div>
+    <script>
+      function time() {
+        var startTime = document.getElementById("startTime").value;
+        var endTime = document.getElementById("endTime").value;
+        var startHours = parseInt(startTime.split(":")[0]);
+        var startMinutes = parseInt(startTime.split(":")[1]);
+        var endHours = parseInt(endTime.split(":")[0]);
+        var endMinutes = parseInt(endTime.split(":")[1]);
+        var timeDifferenceHours = endHours - startHours;
+        var timeDifferenceMinutes = endMinutes - startMinutes;
+        if (timeDifferenceMinutes < 0) {
+          timeDifferenceHours--;
+          timeDifferenceMinutes += 60;
+        }
+        document.getElementById("result").innerHTML =
+          "Time Difference: " +
+          timeDifferenceHours +
+          " hours and " +
+          timeDifferenceMinutes +
+          " minutes";
+      }
+    </script>
+  </body>
+</html>
